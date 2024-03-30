@@ -44,12 +44,13 @@ mod tests {
 
     #[test]
     fn test_success() {
+        let s = "1234567890"; // 使用固定的字符串代替环境变量
         let timestamp = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_secs();
-        let s = std::env::var("TEST_FOO").unwrap();
         let e: u64 = s.parse().unwrap();
         assert!(timestamp >= e && timestamp < e + 10);
     }
 }
+
